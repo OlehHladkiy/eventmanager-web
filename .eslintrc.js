@@ -54,6 +54,8 @@ module.exports = {
     'fp/no-throw': 'off',
     'fp/no-unused-expression': 'off',
     'fp/no-valueof-field': 'error',
+    // TS
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     // Import
     'import/named': 'off',
     // JSX a11y
@@ -88,7 +90,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '16.7',
+      version: '17.0.1',
     },
     'import/resolver': {
       webpack: {

@@ -1,0 +1,9 @@
+{
+  "typescript.tsdk": "/usr/local/lib/node_modules/typescript/lib/",
+  "search.exclude": {
+    "dist/**/*": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
