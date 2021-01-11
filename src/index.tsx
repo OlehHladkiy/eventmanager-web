@@ -1,9 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <div>React: 17.0.1</div>
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+import App from './App';
+
+const mountEl = document.getElementById('root');
+
+const render = () => {
+  if (mountEl) {
+    // eslint-disable-next-line react/no-render-return-value
+    return ReactDOM.render(<App />, mountEl);
+  }
+
+  throw new Error('React failed to mount, because mount element is missing');
+};
+
+render();
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    render();
+  });
+}
