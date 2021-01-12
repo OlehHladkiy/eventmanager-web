@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import configureStore from './store/configureStore';
-import Button from './Button';
 
 import 'antd/dist/antd.css';
 
@@ -16,7 +15,6 @@ const App = () => (
       <ConnectedRouter history={history}>
         <React.StrictMode>
           <div>React: 17.0.1</div>
-          <Button />
         </React.StrictMode>
       </ConnectedRouter>
     </PersistGate>
