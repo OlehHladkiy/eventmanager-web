@@ -37,9 +37,8 @@ function* signInSaga(action: Action): SagaIterator {
       `${AppConfig.apiUrl}/users/signin`,
       action.payload,
     );
-    console.log(payload);
 
-    yield put(getReduxAction(action.type, payload));
+    yield put(getReduxAction(action.type, payload?.data));
     yield call(signInSuccessSaga);
     yield call(notify.success, 'Successfully signed in!');
   } catch (err) {

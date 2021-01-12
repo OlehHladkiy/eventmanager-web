@@ -5,14 +5,14 @@ import { SIGN_UP, SIGN_OUT, SIGN_IN } from './AuthActions';
 export const STATE_KEY = 'auth';
 
 export type AuthState = {
-  _id?: string | null;
+  id?: string | null;
   email?: string | null;
   token?: string | null;
   isAuthenticated: boolean;
 };
 
 export const initialState: AuthState = {
-  _id: null,
+  id: null,
   email: null,
   token: null,
   isAuthenticated: false,
@@ -21,7 +21,7 @@ export const initialState: AuthState = {
 const buildAuthData = (
   user: Record<string, any> = {},
 ): Record<string, any> => ({
-  ...R.pick(['_id', 'email', 'token'], user),
+  ...R.pick(['id', 'email', 'token'], user),
   isAuthenticated: true,
 });
 
@@ -44,7 +44,7 @@ const AuthReducer = (
   }
 };
 
-export const getMyId = R.path<string>([STATE_KEY, '_id']);
+export const getMyId = R.path<string>([STATE_KEY, 'id']);
 
 export const getToken = R.path<string>([STATE_KEY, 'token']);
 
