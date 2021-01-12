@@ -7,6 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import loggerMiddleware from './middlewares/loggerMiddleware';
 import promiseMiddleware from './middlewares/promiseMiddleware';
+import axiosMiddleware from './middlewares/axiosMiddleware';
 import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
 
@@ -36,6 +37,7 @@ export default () => {
   const middlewares = [
     routerMiddleware(history),
     thunk,
+    axiosMiddleware,
     promiseMiddleware,
     sagaMiddleware,
   ];

@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as R from 'ramda';
 import { Action, MiddlewareAPI } from 'redux';
 
-const promiseMiddleware = ({ getState }: MiddlewareAPI) => (next: any) => (
+const axiosMiddleware = ({ getState }: MiddlewareAPI) => (next: any) => (
   action: Action,
 ) => {
   const store = getState();
@@ -20,4 +20,4 @@ const promiseMiddleware = ({ getState }: MiddlewareAPI) => (next: any) => (
   next(action);
 };
 
-export default promiseMiddleware;
+export default axiosMiddleware;
