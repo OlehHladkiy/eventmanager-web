@@ -26,7 +26,6 @@ export const isServer = !(
 );
 
 export default () => {
-  // const history = createHistory();
   const history = isServer
     ? createMemoryHistory({ initialEntries: ['/'] })
     : createBrowserHistory();
@@ -36,8 +35,8 @@ export default () => {
 
   const middlewares = [
     routerMiddleware(history),
-    thunk,
     axiosMiddleware,
+    thunk,
     promiseMiddleware,
     sagaMiddleware,
   ];
@@ -50,7 +49,6 @@ export default () => {
     ? compose
     : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  // $FlowFixMe
   const store = createStore(
     rootReducer(history),
     initialState,
