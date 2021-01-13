@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 7,
+    ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
   },
@@ -12,6 +12,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
+    'plugin:react-hooks/recommended',
   ],
   env: {
     browser: true,
@@ -87,6 +88,7 @@ module.exports = {
     'ramda/when-simplification': 'error',
     // React hooks
     'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   settings: {
     react: {
