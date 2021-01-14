@@ -13,8 +13,14 @@ const host = process.env.HOST || '0.0.0.0';
 const sockHost = process.env.WDS_SOCKET_HOST;
 const sockPath = process.env.WDS_SOCKET_PATH; // default: '/sockjs-node'
 const sockPort = process.env.WDS_SOCKET_PORT;
+// Default proxy config
+const defaultProxy = {
+  '/api/v1': {
+    target: 'http://localhost:4000',
+  },
+};
 
-module.exports = function (proxy, allowedHost) {
+module.exports = function (proxy = defaultProxy, allowedHost) {
   return {
     // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
     // websites from potentially accessing local content through DNS rebinding:
