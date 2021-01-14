@@ -1,13 +1,25 @@
 import { Button, Form, Input } from 'antd';
-import { UserOutlined, LockOutlined, IdcardOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  LockOutlined,
+  IdcardOutlined,
+  LoadingOutlined,
+} from '@ant-design/icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface SignUpFormProps {
+  isCheckingEmail: boolean;
+  onCheckEmail: any;
   onFinish: (values: any) => void;
 }
 
-const SignUpForm = ({ onFinish }: SignUpFormProps) => (
+const SignUpForm = ({
+  isCheckingEmail,
+  onCheckEmail,
+  onFinish,
+}: SignUpFormProps) => (
   <Form name="signUpForm" onFinish={onFinish}>
     <Form.Item
       name="email"
@@ -21,9 +33,16 @@ const SignUpForm = ({ onFinish }: SignUpFormProps) => (
           type: 'email',
           message: 'Please enter the correct email value!',
         },
+        {
+          validator: onCheckEmail,
+        },
       ]}
     >
-      <Input prefix={<UserOutlined />} placeholder="Email" />
+      <Input
+        prefix={<UserOutlined />}
+        suffix={isCheckingEmail && <LoadingOutlined />}
+        placeholder="Email"
+      />
     </Form.Item>
     <Form.Item
       name="name"
@@ -46,6 +65,7 @@ const SignUpForm = ({ onFinish }: SignUpFormProps) => (
       <SignUpForm.Button type="primary" htmlType="submit">
         Sign Up
       </SignUpForm.Button>
+      Already registered <Link to="/signin">Sign in now</Link>
     </Form.Item>
   </Form>
 );

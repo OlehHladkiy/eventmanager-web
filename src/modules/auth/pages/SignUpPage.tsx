@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { signUp } from '../AuthActions';
+import * as AuthServices from '../AuthServices';
 import FormWrapper from '../components/FormWrapper';
 import SignUpForm from '../forms/SignUpForm';
 
 const SignUpPage = () => {
+  const [isCheckingEmail, setIsCheckingEmail] = useState(false);
   const dispatch = useDispatch();
 
   const onSignUp = (data: {
@@ -16,9 +18,23 @@ const SignUpPage = () => {
     dispatch(signUp(data));
   };
 
+  const onCheckEmail = async (_: any, email: string) => {
+    setIsCheckingEmail(true);
+    const response = await AuthServices.isEmailExists(email);
+    setIsCheckingEmail(false);
+
+    if (response.data) {
+      throw new Error('Email already exists!');
+    }
+  };
+
   return (
     <FormWrapper title="Sign Up">
-      <SignUpForm onFinish={onSignUp} />
+      <SignUpForm
+        isCheckingEmail={isCheckingEmail}
+        onCheckEmail={onCheckEmail}
+        onFinish={onSignUp}
+      />
     </FormWrapper>
   );
 };
