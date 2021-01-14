@@ -8,10 +8,7 @@ interface PrivateRouteProps extends RouteProps {
   component: any;
 }
 
-const PrivateRoute: React.SFC<PrivateRouteProps> = ({
-  component: Component,
-  ...rest
-}: PrivateRouteProps) => {
+const PrivateRoute = ({ component: Component, ...rest }: PrivateRouteProps) => {
   const history = useHistory();
   const isAuthenticated = useSelector(getIsAuthenticated);
 
