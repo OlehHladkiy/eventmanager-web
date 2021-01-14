@@ -44,15 +44,12 @@ const AuthReducer = (
   }
 };
 
-export const getMyId = R.path<string>([STATE_KEY, 'id']);
+export const getMyId = R.path([STATE_KEY, 'id']);
 
-export const getToken = R.path<string>([STATE_KEY, 'token']);
+export const getToken = R.path([STATE_KEY, 'token']);
 
-export const getIsAuthenticated = R.path<boolean>([
-  STATE_KEY,
-  'isAuthenticated',
-]);
+export const getIsAuthenticated = R.path([STATE_KEY, 'isAuthenticated']);
 
-export const getEmail = R.path<string>([STATE_KEY, 'email']);
+export const getEmail = R.path([STATE_KEY, 'email']);
 
 export default AuthReducer;
