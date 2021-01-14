@@ -1,24 +1,38 @@
 import { ConnectedRouter } from 'connected-react-router';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
-import configureStore from './store/configureStore';
-
+import styled, { ThemeProvider } from 'styled-components';
 import 'antd/dist/antd.css';
 
+import OnLocationChange from '@components/onLocationChange';
+import Preloader from '@components/Preloader';
+
+import configureStore from './store/configureStore';
+import routes from './routes';
+import { getTheme } from './theme/index';
+
+const { theme, GlobalStyle } = getTheme('base');
 const { history, persistor, store } = configureStore();
 
 const App = () => (
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <ConnectedRouter history={history}>
-        <React.StrictMode>
-          <div>React: 17.0.1</div>
-        </React.StrictMode>
-      </ConnectedRouter>
-    </PersistGate>
-  </Provider>
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ConnectedRouter history={history}>
+          <GlobalStyle />
+          <OnLocationChange />
+          <Suspense fallback={<Preloader />}>
+            <App.Layout>{routes}</App.Layout>
+          </Suspense>
+        </ConnectedRouter>
+      </PersistGate>
+    </Provider>
+  </ThemeProvider>
 );
+
+App.Layout = styled.div`
+  min-height: 100vh;
+`;
 
 export default App;
