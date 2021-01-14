@@ -1,15 +1,14 @@
 import { message as notify } from 'antd';
-import axios from 'axios';
 import { push } from 'connected-react-router';
 import * as R from 'ramda';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { SagaIterator } from 'redux-saga';
 
-import AppConfig from '@config/AppConfig';
 import { Action } from '@store/models';
 import { getReduxAction } from '@store/helpers';
 
 import { SIGN_IN, SIGN_UP, SIGN_OUT } from './AuthActions';
+import * as AuthServices from './AuthServices';
 
 function* signInSuccessSaga(): SagaIterator {
   yield put(push('/'));
@@ -32,11 +31,7 @@ function* signOutSaga(): SagaIterator {
 
 function* signInSaga(action: Action): SagaIterator {
   try {
-    const payload = yield call(
-      axios.post,
-      `${AppConfig.apiUrl}/users/signin`,
-      action.payload,
-    );
+    const payload = yield call(AuthServices.signIn, action.payload);
 
     yield put(getReduxAction(action.type, payload?.data));
     yield call(signInSuccessSaga);
@@ -49,11 +44,7 @@ function* signInSaga(action: Action): SagaIterator {
 
 function* signUpSaga(action: Action): SagaIterator {
   try {
-    const payload = yield call(
-      axios.post,
-      `${AppConfig.apiUrl}/users/signup`,
-      action.payload,
-    );
+    const payload = yield call(AuthServices.signUp, action.payload);
 
     yield put(getReduxAction(action.type, payload));
     yield call(signInSuccessSaga);

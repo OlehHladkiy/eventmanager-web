@@ -2,6 +2,7 @@ import { Button, Form, Input, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 interface SignInFormProps {
   onFinish: (values: any) => void;
@@ -38,6 +39,7 @@ const SignInForm = ({ onFinish }: SignInFormProps) => (
       <SignInForm.Button type="primary" htmlType="submit">
         Sign In
       </SignInForm.Button>
+      <Link to="/signup">Sign up now</Link>
     </Form.Item>
   </Form>
 );
