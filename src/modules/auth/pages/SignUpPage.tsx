@@ -5,6 +5,7 @@ import { signUp } from '../AuthActions';
 import * as AuthServices from '../AuthServices';
 import FormWrapper from '../components/FormWrapper';
 import SignUpForm from '../forms/SignUpForm';
+import { testPasswordStrength } from '../helpers/auth-helpers';
 
 const SignUpPage = () => {
   const [isCheckingEmail, setIsCheckingEmail] = useState(false);
@@ -28,11 +29,20 @@ const SignUpPage = () => {
     }
   };
 
+  const onValidatePassword = async (_: any, password: string) => {
+    const { error } = testPasswordStrength(password);
+
+    if (!!error) {
+      throw new Error(error);
+    }
+  };
+
   return (
     <FormWrapper title="Sign Up">
       <SignUpForm
         isCheckingEmail={isCheckingEmail}
         onCheckEmail={onCheckEmail}
+        onValidatePassword={onValidatePassword}
         onFinish={onSignUp}
       />
     </FormWrapper>

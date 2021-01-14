@@ -4,8 +4,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { SignInData } from '../AuthActions';
+
 interface SignInFormProps {
-  onFinish: (values: any) => void;
+  onFinish: (values: SignInData) => void;
 }
 
 const SignInForm = ({ onFinish }: SignInFormProps) => (
