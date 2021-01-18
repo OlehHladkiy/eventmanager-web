@@ -8,7 +8,7 @@ import { Action } from '@store/models';
 import { getReduxAction } from '@store/helpers';
 
 import { SIGN_IN, SIGN_UP, SIGN_OUT } from './AuthActions';
-import * as AuthServices from './AuthServices';
+import * as AuthServices from './services/apiService';
 
 function* signInSuccessSaga(): SagaIterator {
   yield put(push('/'));

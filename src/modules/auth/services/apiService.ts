@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import AppConfig from '@config/AppConfig';
 
-import { SignInData, SignUpData } from './AuthActions';
+import { SignInData, SignUpData } from '../AuthActions';
 
 export const signIn = (data: SignInData, ...params: any) =>
   axios.post(`${AppConfig.apiUrl}/users/signin`, data, ...params);

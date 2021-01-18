@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { signUp } from '../AuthActions';
-import * as AuthServices from '../AuthServices';
+import * as AuthServices from '../services/apiService';
 import FormWrapper from '../components/FormWrapper';
 import SignUpForm from '../forms/SignUpForm';
 import { testPasswordStrength } from '../helpers/auth-helpers';
