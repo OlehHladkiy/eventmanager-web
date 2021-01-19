@@ -1,7 +1,12 @@
 import React from 'react';
+import { ImpulseSpinner } from 'react-spinners-kit';
 import styled from 'styled-components';
 
-const Preloader = () => <Preloader.Wrapper>Loading...</Preloader.Wrapper>;
+const Preloader = () => (
+  <Preloader.Wrapper>
+    <ImpulseSpinner loading />
+  </Preloader.Wrapper>
+);
 
 Preloader.Wrapper = styled.div`
   position: fixed;
