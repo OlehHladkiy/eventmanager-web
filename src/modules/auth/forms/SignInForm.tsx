@@ -11,7 +11,14 @@ interface SignInFormProps {
 }
 
 const SignInForm = ({ onFinish }: SignInFormProps) => (
-  <Form name="signInForm" onFinish={onFinish}>
+  <Form
+    name="signInForm"
+    initialValues={{
+      email: 'admin@gmail.com',
+      password: 'Superstrong1!',
+    }}
+    onFinish={onFinish}
+  >
     <Form.Item
       name="email"
       rules={[

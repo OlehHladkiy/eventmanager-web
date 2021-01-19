@@ -1,4 +1,3 @@
-// @flow
 import * as R from 'ramda';
 import owasp from 'owasp-password-strength-test';
 

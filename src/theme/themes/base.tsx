@@ -1,4 +1,3 @@
-// @flow
 import { createGlobalStyle } from 'styled-components';
 import colors from '../patterns/colors';
 import fonts from '../patterns/fonts';

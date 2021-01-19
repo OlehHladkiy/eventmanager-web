@@ -5,8 +5,10 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import { getIsAuthenticated } from '@modules/auth/AuthReducer';
 import PrivateRoute from '@modules/auth/components/PrivateRoute';
 
+// Auth pages.
 const SignInPage = lazy(() => import('@modules/auth/pages/SignInPage'));
 const SignUpPage = lazy(() => import('@modules/auth/pages/SignUpPage'));
+// Other pages.
 const NotFoundPage = lazy(() => import('@components/NotFound'));
 
 const RootRedirect = () => {

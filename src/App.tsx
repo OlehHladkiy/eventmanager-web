@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 
 import OnLocationChange from '@components/onLocationChange';
 import Preloader from '@components/Preloader';
+import Header from '@components/Header';
 
 import configureStore from './store/configureStore';
 import routes from './routes';
@@ -23,6 +24,7 @@ const App = () => (
           <GlobalStyle />
           <OnLocationChange />
           <Suspense fallback={<Preloader />}>
+            <Header />
             <App.Layout>{routes}</App.Layout>
           </Suspense>
         </ConnectedRouter>
