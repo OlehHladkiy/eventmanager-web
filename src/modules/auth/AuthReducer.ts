@@ -19,9 +19,10 @@ export const initialState: AuthState = {
 };
 
 const buildAuthData = (
-  user: Record<string, any> = {},
+  payload: Record<string, any> = {},
 ): Record<string, any> => ({
-  ...R.pick(['id', 'email', 'token'], user),
+  ...R.pick(['id', 'email'], payload?.user ?? {}),
+  token: payload?.token,
   isAuthenticated: true,
 });
 
@@ -32,6 +33,7 @@ const AuthReducer = (
   switch (action.type) {
     case `${SIGN_IN}_SUCCESS`:
     case `${SIGN_UP}_SUCCESS`: {
+      console.log(action.payload, 'payload');
       const authData = buildAuthData(action.payload);
       return R.mergeDeepRight(state, authData);
     }

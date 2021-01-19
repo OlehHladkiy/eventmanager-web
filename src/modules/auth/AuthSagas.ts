@@ -46,7 +46,7 @@ function* signUpSaga(action: Action): SagaIterator {
   try {
     const payload = yield call(AuthServices.signUp, action.payload);
 
-    yield put(getReduxAction(action.type, payload));
+    yield put(getReduxAction(action.type, payload?.data));
     yield call(signInSuccessSaga);
     yield call(notify.success, 'Successfully signed up!');
   } catch (err) {

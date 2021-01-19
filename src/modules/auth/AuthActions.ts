@@ -24,3 +24,7 @@ export const signUp = (payload: SignUpData) => ({
   type: SIGN_UP,
   payload,
 });
+
+export const signOut = () => ({
+  type: SIGN_OUT,
+});
