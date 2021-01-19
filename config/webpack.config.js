@@ -326,7 +326,7 @@ module.exports = function (webpackEnv) {
         '@config': path.resolve('src/config'),
         '@theme': path.resolve('src/theme'),
         '@components': path.resolve('src/components'),
-        '@graphql': path.resolve('src/graphql'),
+        '@common': path.resolve('src/common'),
         '@modules': path.resolve('src/modules'),
         '@services': path.resolve('src/services'),
         '@store': path.resolve('src/store'),

@@ -24,7 +24,7 @@
     "paths": {
       "@config/*": ["config/*"],
       "@components/*": ["components/*"],
-      "@graphql/*": ["graphql/*"],
+      "@common/*": ["common/*"],
       "@modules/*": ["modules/*"],
       "@services/*": ["services/*"],
       "@store/*": ["store/*"],
