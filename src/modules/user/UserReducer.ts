@@ -2,11 +2,14 @@ import * as R from 'ramda';
 
 import { SIGN_IN, SIGN_UP, SIGN_OUT } from '@modules/auth/AuthActions';
 
+import { UPDATE_ME } from './UserActions';
+
 export const STATE_KEY = 'user';
 
 export interface UserState {
   id?: string | null;
   email?: string | null;
+  password?: string | null;
   name?: string | null;
   created_at: Date | string | null;
   modified_at: Date | string | null;
@@ -15,23 +18,23 @@ export interface UserState {
 const initialState: UserState = {
   id: null,
   email: null,
+  password: null,
   name: null,
   created_at: null,
   modified_at: null,
 };
 
-const UserReducer = (
+const Reducer = (
   state: UserState = initialState,
-  action: any,
+  { type, payload }: any,
 ): UserState => {
-  switch (action.type) {
+  switch (type) {
     case `${SIGN_IN}_SUCCESS`:
     case `${SIGN_UP}_SUCCESS`: {
-      const user = R.compose(
-        R.dissoc('password'),
-        R.pathOr({}, ['payload', 'user']),
-      )(action);
-      return R.mergeDeepRight(state, user);
+      return R.mergeDeepRight(state, payload?.user);
+    }
+    case `${UPDATE_ME}_SUCCESS`: {
+      return R.mergeDeepRight(state, payload);
     }
     case SIGN_OUT: {
       return initialState;
@@ -61,4 +64,4 @@ export const getAvatar = R.path([STATE_KEY, 'avatar']);
 
 export const getCreatedDate = R.path([STATE_KEY, 'createdAt']);
 
-export default UserReducer;
+export default Reducer;
