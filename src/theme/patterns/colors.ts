@@ -9,6 +9,7 @@ export const colorScheme = {
   gray: { value: '#e8e8e8', name: 'Gray' },
   red: { value: '#ff0000', name: 'Red' },
   green: { value: '#008000', name: 'Green' },
+  grayishBlue: { value: '#38364f', name: 'GrayishBlue' },
 };
 
 export const getColor = (colorKey: string) =>

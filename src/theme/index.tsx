@@ -10,4 +10,10 @@ const themeMap: Record<string, any> = {
   },
 };
 
+export const Breakpoint = {
+  Md: '768px',
+  Lg: '1025px',
+  Xl: '1600px',
+};
+
 export const getTheme = (themeName: string) => themeMap[themeName] || {};
