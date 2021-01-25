@@ -15,7 +15,7 @@ owasp.config({
  * @returns {Object} owasp object.
  */
 export const testPasswordStrength = (password: string) => {
-  const result = owasp.test(password);
+  const result = owasp.test(password || '');
   const nextError = R.compose(R.head, R.propOr([], 'errors'))(result);
 
   return {

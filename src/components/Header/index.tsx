@@ -2,7 +2,7 @@ import { Dropdown, Menu } from 'antd';
 import { UpOutlined, DownOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { getShortName } from 'common/helpers/string-helpers';
@@ -12,9 +12,11 @@ import { getUser } from '@modules/user/UserReducer';
 import { UserData } from '@modules/user/models/user-models';
 import useHovered from 'common/hooks/useHovered';
 import UserAvatar from '@components/UserAvatar';
+import { Setting } from '@modules/settings/models/settings-model';
 
 const Header = () => {
   const location = useLocation();
+  const history = useHistory();
 
   const [isVisible, setIsVisible] = useState(false);
   const user: UserData = useSelector(getUser);
@@ -36,7 +38,11 @@ const Header = () => {
           onVisibleChange={setIsVisible}
           overlay={
             <Menu>
-              <Menu.Item>Settings</Menu.Item>
+              <Menu.Item
+                onClick={() => history.push(`/settings/${Setting.User}`)}
+              >
+                Settings
+              </Menu.Item>
               <Menu.Item onClick={() => dispatch(signOut())}>
                 Sign Out
               </Menu.Item>
@@ -56,13 +62,12 @@ const Header = () => {
 };
 
 Header.Wrapper = styled.header`
-  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 70px;
-  background-color: #38364f;
+  background-color: ${(props) => props.theme.colors.grayishBlue};
 `;
 
 Header.Logo = styled(Link)`

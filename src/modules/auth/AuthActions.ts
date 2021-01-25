@@ -1,8 +1,8 @@
-const namespace = 'AUTH';
+const NAMESPACE = 'AUTH';
 
-export const SIGN_IN = `${namespace}/SIGN_IN`;
-export const SIGN_UP = `${namespace}/SIGN_UP`;
-export const SIGN_OUT = `${namespace}/SIGN_OUT`;
+export const SIGN_IN = `${NAMESPACE}/SIGN_IN`;
+export const SIGN_UP = `${NAMESPACE}/SIGN_UP`;
+export const SIGN_OUT = `${NAMESPACE}/SIGN_OUT`;
 
 export interface SignInData {
   email: string;

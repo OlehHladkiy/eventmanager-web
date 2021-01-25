@@ -1,3 +1,4 @@
+import { UPDATE_ME } from '@modules/user/UserActions';
 import * as R from 'ramda';
 
 import { SIGN_UP, SIGN_OUT, SIGN_IN } from './AuthActions';
@@ -26,16 +27,18 @@ const buildAuthData = (
   isAuthenticated: true,
 });
 
-const AuthReducer = (
+const Reducer = (
   state: AuthState = initialState,
-  action: any,
+  { type, payload }: any,
 ): AuthState => {
-  switch (action.type) {
+  switch (type) {
     case `${SIGN_IN}_SUCCESS`:
     case `${SIGN_UP}_SUCCESS`: {
-      console.log(action.payload, 'payload');
-      const authData = buildAuthData(action.payload);
+      const authData = buildAuthData(payload);
       return R.mergeDeepRight(state, authData);
+    }
+    case `${UPDATE_ME}_SUCCESS`: {
+      return R.assoc('email', payload?.email, state);
     }
     case SIGN_OUT: {
       return initialState;
@@ -54,4 +57,4 @@ export const getIsAuthenticated = R.path([STATE_KEY, 'isAuthenticated']);
 
 export const getEmail = R.path([STATE_KEY, 'email']);
 
-export default AuthReducer;
+export default Reducer;

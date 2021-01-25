@@ -8,20 +8,16 @@ import { Action } from '@store/models';
 import { getReduxAction } from '@store/helpers';
 
 import { SIGN_IN, SIGN_UP, SIGN_OUT } from './AuthActions';
-import * as AuthServices from './services/apiService';
+import * as ApiService from './services/apiService';
 
 function* signInSuccessSaga(): SagaIterator {
   yield put(push('/'));
 }
 
-function* signInFailSaga(action: Action): SagaIterator {
+function* signInFailSaga(err: any): SagaIterator {
   yield call(
     notify.error,
-    R.pathOr(
-      'Email or Password is incorrect',
-      ['error', '0', 'message'],
-      action,
-    ),
+    R.pathOr('Email or Password is incorrect', ['error', '0', 'message'], err),
   );
 }
 
@@ -29,29 +25,29 @@ function* signOutSaga(): SagaIterator {
   yield put(push('/signin'));
 }
 
-function* signInSaga(action: Action): SagaIterator {
+function* signInSaga({ type, payload }: Action): SagaIterator {
   try {
-    const payload = yield call(AuthServices.signIn, action.payload);
+    const response = yield call(ApiService.signIn, payload);
 
-    yield put(getReduxAction(action.type, payload?.data));
+    yield put(getReduxAction(type, response?.data));
     yield call(signInSuccessSaga);
     yield call(notify.success, 'Successfully signed in!');
   } catch (err) {
-    yield put(getReduxAction(action.type));
-    yield call(signInFailSaga, action);
+    yield put(getReduxAction(type));
+    yield call(signInFailSaga, err);
   }
 }
 
-function* signUpSaga(action: Action): SagaIterator {
+function* signUpSaga({ type, payload }: Action): SagaIterator {
   try {
-    const payload = yield call(AuthServices.signUp, action.payload);
+    const response = yield call(ApiService.signUp, payload);
 
-    yield put(getReduxAction(action.type, payload?.data));
+    yield put(getReduxAction(type, response?.data));
     yield call(signInSuccessSaga);
     yield call(notify.success, 'Successfully signed up!');
   } catch (err) {
-    yield put(getReduxAction(action.type));
-    yield call(signInFailSaga, action);
+    yield put(getReduxAction(type));
+    yield call(signInFailSaga, err);
   }
 }
 

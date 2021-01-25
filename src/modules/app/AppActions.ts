@@ -1,6 +1,7 @@
-export const namespace = 'APP';
-export const BOOTSTRAP = `${namespace}/BOOTSTRAP`;
-export const AUTHENTICATED = `${namespace}/AUTHENTICATED`;
+const NAMESPACE = 'APP';
+
+export const BOOTSTRAP = `${NAMESPACE}/BOOTSTRAP`;
+export const AUTHENTICATED = `${NAMESPACE}/AUTHENTICATED`;
 
 import { Action } from '@store/models';
 

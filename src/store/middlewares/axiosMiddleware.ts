@@ -5,10 +5,9 @@ import { Action, MiddlewareAPI } from 'redux';
 const axiosMiddleware = ({ getState }: MiddlewareAPI) => (next: any) => (
   action: Action,
 ) => {
-  const store = getState();
-
   axios.interceptors.request.use(
     (config) => {
+      const store = getState();
       config.headers.Authentication = R.pathOr('', ['auth', 'token'], store);
       return config;
     },
