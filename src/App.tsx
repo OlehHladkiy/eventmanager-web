@@ -24,8 +24,10 @@ const App = () => (
           <GlobalStyle />
           <OnLocationChange />
           <Suspense fallback={<Preloader />}>
-            <Header />
-            <App.Layout>{routes}</App.Layout>
+            <App.Layout>
+              <Header />
+              <App.Content>{routes}</App.Content>
+            </App.Layout>
           </Suspense>
         </ConnectedRouter>
       </PersistGate>
@@ -34,7 +36,11 @@ const App = () => (
 );
 
 App.Layout = styled.div`
-  min-height: 100vh;
+  min-height: 100vh !important;
+`;
+
+App.Content = styled.main`
+  height: calc(100vh - 70px);
 `;
 
 export default App;
