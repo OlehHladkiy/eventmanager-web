@@ -3,6 +3,9 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 
 import ReduxPersist from '@config/ReduxPersistConfig';
+import AppSettingsReducer, {
+  STATE_KEY as APP_SETTINGS_STATE_KEY,
+} from '@modules/app-settings/AppSettingsReducer';
 import AuthReducer, {
   STATE_KEY as AUTH_STATE_KEY,
 } from '@modules/auth/AuthReducer';
@@ -20,6 +23,7 @@ export default (history: any) =>
     persist,
     combineReducers,
     R.assoc(ROUTER_STATE_KEY, RouterReducer(history)),
+    R.assoc(APP_SETTINGS_STATE_KEY, AppSettingsReducer),
     R.assoc(AUTH_STATE_KEY, AuthReducer),
     R.assoc(USER_STATE_KEY, UserReducer),
   )({});
