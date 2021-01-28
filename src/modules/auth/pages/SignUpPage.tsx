@@ -1,12 +1,12 @@
 import React from 'react';
 
-import FormWrapper from '../components/FormWrapper';
+import AuthFormWrapper from '../components/AuthFormWrapper';
 import SignUpForm from '../forms/SignUpForm';
 
 const SignUpPage = () => (
-  <FormWrapper title="Sign Up">
+  <AuthFormWrapper title="Sign Up">
     <SignUpForm />
-  </FormWrapper>
+  </AuthFormWrapper>
 );
 
 export default SignUpPage;

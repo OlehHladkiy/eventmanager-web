@@ -1,12 +1,12 @@
 import React from 'react';
 
-import FormWrapper from '../components/FormWrapper';
+import AuthFormWrapper from '../components/AuthFormWrapper';
 import SignInForm from '../forms/SignInForm';
 
 const SignInPage = () => (
-  <FormWrapper title="Sign In">
+  <AuthFormWrapper title="Sign In">
     <SignInForm />
-  </FormWrapper>
+  </AuthFormWrapper>
 );
 
 export default SignInPage;
