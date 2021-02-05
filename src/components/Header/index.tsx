@@ -1,6 +1,6 @@
 import { Dropdown, Menu } from 'antd';
-import { UpOutlined, DownOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
+import { DownOutlined } from '@ant-design/icons';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
@@ -18,7 +18,6 @@ const Header = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const [isVisible, setIsVisible] = useState(false);
   const user: UserData = useSelector(getUser);
   const [ref, isHovered]: any = useHovered();
 
@@ -34,8 +33,6 @@ const Header = () => {
       <Header.UserMenu ref={ref} isHovered={isHovered}>
         <Dropdown
           trigger={['click']}
-          visible={isVisible}
-          onVisibleChange={setIsVisible}
           overlay={
             <Menu>
               <Menu.Item
@@ -52,7 +49,7 @@ const Header = () => {
           <Header.DropdownContent>
             <UserAvatar name={getShortName(user?.name)} />
             <Header.IconWrapper>
-              {isVisible ? <UpOutlined /> : <DownOutlined />}
+              <DownOutlined />
             </Header.IconWrapper>
           </Header.DropdownContent>
         </Dropdown>
