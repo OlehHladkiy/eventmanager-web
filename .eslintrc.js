@@ -26,6 +26,7 @@ module.exports = {
     google: true,
   },
   rules: {
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     // General
     'global-require': 'warn',
     'key-spacing': 'off',
