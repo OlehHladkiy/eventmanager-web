@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import PasswordBar from '@components/PasswordBar';
 
-import { testPasswordStrength } from '../helpers/auth-helpers';
+import { testPasswordStrength } from '../helpers';
 
 interface PasswordFormItemProps {
   required?: boolean;

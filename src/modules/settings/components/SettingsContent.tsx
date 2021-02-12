@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import React from 'react';
 import styled from 'styled-components';
 
-import { MenuContents } from '../models/settings-model';
+import { MenuContents } from '../models';
 
 const getSettingsById = (id: string) =>
   R.find(R.propEq('key', id), MenuContents);

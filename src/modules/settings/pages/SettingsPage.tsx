@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Breakpoint } from '@theme/index';
 
 import SettingsContent from '../components/SettingsContent';
-import { MenuItems } from '../models/settings-model';
+import { MenuItems } from '../models';
 
 const SettingsPage = () => {
   const { settingsId }: any = useParams();

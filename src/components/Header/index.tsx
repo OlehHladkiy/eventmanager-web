@@ -7,12 +7,12 @@ import styled from 'styled-components';
 
 import { getShortName } from 'common/helpers/string-helpers';
 import { signOut } from '@modules/auth/AuthActions';
-import { getIsFullSize } from '@modules/router/helpers/router-helpers';
+import { getIsFullSize } from '@modules/router/helpers';
 import { getUser } from '@modules/user/UserReducer';
-import { UserData } from '@modules/user/models/user-models';
+import { UserData } from '@modules/user/models';
 import useHovered from 'common/hooks/useHovered';
 import UserAvatar from '@components/UserAvatar';
-import { Setting } from '@modules/settings/models/settings-model';
+import { SettingType } from '@modules/settings/models';
 
 const Header = () => {
   const location = useLocation();
@@ -36,7 +36,7 @@ const Header = () => {
           overlay={
             <Menu>
               <Menu.Item
-                onClick={() => history.push(`/settings/${Setting.User}`)}
+                onClick={() => history.push(`/settings/${SettingType.User}`)}
               >
                 Settings
               </Menu.Item>

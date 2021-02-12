@@ -10,7 +10,7 @@ import EmailFormItem from '@modules/auth/components/EmailFormItem';
 
 import { updateMe } from '../UserActions';
 import { getUser } from '../UserReducer';
-import { UserData } from '../models/user-models';
+import { UserData } from '../models';
 
 const UpdateForm = () => {
   const user: any = useSelector(getUser);
