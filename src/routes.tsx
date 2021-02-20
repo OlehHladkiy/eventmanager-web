@@ -2,14 +2,14 @@ import React, { lazy } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import { getIsAuthenticated } from '@modules/auth/AuthReducer';
+import { getIsAuthenticated } from '@modules/auth/Reducer';
 import PrivateRoute from '@modules/auth/components/PrivateRoute';
 
 // Auth pages.
-const SignInPage = lazy(() => import('@modules/auth/pages/SignInPage'));
-const SignUpPage = lazy(() => import('@modules/auth/pages/SignUpPage'));
+const SignIn = lazy(() => import('@modules/auth/pages/SignIn'));
+const SignUp = lazy(() => import('@modules/auth/pages/SignUp'));
 // Settings pages.
-const SettingsPage = lazy(() => import('@modules/settings/pages/SettingsPage'));
+const Setting = lazy(() => import('@modules/settings/pages/Settings'));
 // Other pages.
 const NotFoundPage = lazy(() => import('@components/NotFound'));
 
@@ -27,12 +27,12 @@ export default (
   <>
     <Switch>
       <PrivateRoute exact path="/" component={RootRedirect} />
-      <Route exact path="/signin" component={SignInPage} />
-      <Route exact path="/signup" component={SignUpPage} />
+      <Route exact path="/signin" component={SignIn} />
+      <Route exact path="/signup" component={SignUp} />
       <PrivateRoute
         exact
         path="/settings/:settingsId(user)"
-        component={SettingsPage}
+        component={Setting}
       />
       {/* Catch all routes */}
       <Route component={NotFoundPage} />

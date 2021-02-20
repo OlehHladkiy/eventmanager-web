@@ -7,8 +7,8 @@ import { SagaIterator } from 'redux-saga';
 import { Action } from '@store/models';
 import { getReduxAction } from '@store/helpers';
 
-import { SIGN_IN, SIGN_UP, SIGN_OUT } from './AuthActions';
-import * as ApiService from './services/apiService';
+import { SIGN_IN, SIGN_UP, SIGN_OUT } from './Actions';
+import * as ApiService from './services/api';
 
 function* signInSuccessSaga(): SagaIterator {
   yield put(push('/'));

@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { signIn, SignInData } from '../AuthActions';
+import { signIn, SignInData } from '../Actions';
 
-const SignInForm = () => {
+const SignIn = () => {
   const dispatch = useDispatch();
 
   const onFinish = (data: SignInData) => {
@@ -44,26 +44,26 @@ const SignInForm = () => {
         <Form.Item noStyle>
           <Checkbox checked>Remember me</Checkbox>
         </Form.Item>
-        <SignInForm.ForgotPasswordLink href="">
+        <SignIn.ForgotPasswordLink href="">
           Forgot password
-        </SignInForm.ForgotPasswordLink>
+        </SignIn.ForgotPasswordLink>
       </Form.Item>
       <Form.Item>
-        <SignInForm.Button type="primary" htmlType="submit">
+        <SignIn.Button type="primary" htmlType="submit">
           Sign In
-        </SignInForm.Button>
+        </SignIn.Button>
         <Link to="/signup">Sign up now</Link>
       </Form.Item>
     </Form>
   );
 };
 
-SignInForm.Button = styled(Button)`
+SignIn.Button = styled(Button)`
   width: 100%;
 `;
 
-SignInForm.ForgotPasswordLink = styled.a`
+SignIn.ForgotPasswordLink = styled.a`
   float: right;
 `;
 
-export default SignInForm;
+export default SignIn;

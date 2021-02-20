@@ -4,15 +4,15 @@ import * as R from 'ramda';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setIsLoading } from '@modules/app-settings/AppSettingsActions';
-import { getIsLoading } from '@modules/app-settings/AppSettingsReducer';
+import { setIsLoading } from '@modules/app-settings/Actions';
+import { getIsLoading } from '@modules/app-settings/Reducer';
 import EmailFormItem from '@modules/auth/components/EmailFormItem';
 
-import { updateMe } from '../UserActions';
-import { getUser } from '../UserReducer';
+import { updateMe } from '../Actions';
+import { getUser } from '../Reducer';
 import { UserData } from '../models';
 
-const UpdateForm = () => {
+const Update = () => {
   const user: any = useSelector(getUser);
   const isLoading: boolean = useSelector(getIsLoading);
 
@@ -57,4 +57,4 @@ const UpdateForm = () => {
   );
 };
 
-export default UpdateForm;
+export default Update;

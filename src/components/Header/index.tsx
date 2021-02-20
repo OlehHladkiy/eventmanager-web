@@ -6,9 +6,9 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { getShortName } from 'common/helpers/string-helpers';
-import { signOut } from '@modules/auth/AuthActions';
+import { signOut } from '@modules/auth/Actions';
 import { getIsFullSize } from '@modules/router/helpers';
-import { getUser } from '@modules/user/UserReducer';
+import { getUser } from '@modules/user/Reducer';
 import { UserData } from '@modules/user/models';
 import useHovered from 'common/hooks/useHovered';
 import UserAvatar from '@components/UserAvatar';

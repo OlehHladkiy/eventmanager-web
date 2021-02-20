@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { signUp, SignUpData } from '../AuthActions';
+import { signUp, SignUpData } from '../Actions';
 import EmailFormItem from '../components/EmailFormItem';
 import PasswordFormItem from '../components/PasswordFormItem';
 
-const SignUpForm = () => {
+const SignUp = () => {
   const dispatch = useDispatch();
 
   const onFinish = (data: SignUpData) => {
@@ -32,21 +32,21 @@ const SignUpForm = () => {
       </Form.Item>
       <PasswordFormItem />
       <Form.Item>
-        <SignUpForm.Button type="primary" htmlType="submit">
+        <SignUp.Button type="primary" htmlType="submit">
           Sign Up
-        </SignUpForm.Button>
+        </SignUp.Button>
         Already registered <Link to="/signin">Sign in now</Link>
       </Form.Item>
     </Form>
   );
 };
 
-SignUpForm.Button = styled(Button)`
+SignUp.Button = styled(Button)`
   width: 100%;
 `;
 
-SignUpForm.PasswordItem = styled(Form.Item)`
+SignUp.PasswordItem = styled(Form.Item)`
   margin-bottom: 0;
 `;
 
-export default SignUpForm;
+export default SignUp;

@@ -1,8 +1,8 @@
 import * as R from 'ramda';
 
-import { SIGN_OUT } from '@modules/auth/AuthActions';
+import { SIGN_OUT } from '@modules/auth/Actions';
 
-import { SET_IS_LOADING } from './AppSettingsActions';
+import { SET_IS_LOADING } from './Actions';
 
 export const STATE_KEY = 'system-settings';
 

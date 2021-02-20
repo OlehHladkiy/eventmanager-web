@@ -1,12 +1,12 @@
 import React from 'react';
 
 import AuthFormWrapper from '../components/AuthFormWrapper';
-import SignInForm from '../forms/SignInForm';
+import SignInForm from '../forms/SignIn';
 
-const SignInPage = () => (
+const SignIn = () => (
   <AuthFormWrapper title="Sign In">
     <SignInForm />
   </AuthFormWrapper>
 );
 
-export default SignInPage;
+export default SignIn;

@@ -1,7 +1,7 @@
-import { UPDATE_ME } from '@modules/user/UserActions';
+import { UPDATE_ME } from '@modules/user/Actions';
 import * as R from 'ramda';
 
-import { SIGN_UP, SIGN_OUT, SIGN_IN } from './AuthActions';
+import { SIGN_UP, SIGN_OUT, SIGN_IN } from './Actions';
 
 export const STATE_KEY = 'auth';
 

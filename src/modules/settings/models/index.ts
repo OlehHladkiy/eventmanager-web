@@ -17,7 +17,7 @@ export const MenuItems = [
 
 export const MenuContents = [
   {
-    component: lazy(() => import('@modules/user/forms/UpdateForm')),
+    component: lazy(() => import('@modules/user/forms/Update')),
     key: SettingType.User,
     title: 'User',
   },

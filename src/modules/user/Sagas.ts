@@ -5,8 +5,8 @@ import { SagaIterator } from 'redux-saga';
 import { Action } from '@store/models';
 import { getReduxAction } from '@store/helpers';
 
-import * as ApiService from './services/apiService';
-import { UPDATE_ME } from './UserActions';
+import * as ApiService from './services/api';
+import { UPDATE_ME } from './Actions';
 
 function* updateMeSaga({ type, payload: { id, data } }: Action): SagaIterator {
   try {

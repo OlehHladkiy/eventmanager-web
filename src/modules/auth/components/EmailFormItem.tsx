@@ -2,7 +2,7 @@ import { Form, Input } from 'antd';
 import { UserOutlined, LoadingOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 
-import * as ApiService from '@modules/user/services/apiService';
+import * as ApiService from '@modules/user/services/api';
 
 const EmailFormItem = () => {
   const [isCheckingEmail, setIsCheckingEmail] = useState(false);

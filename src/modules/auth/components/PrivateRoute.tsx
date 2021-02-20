@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, useHistory, RouteProps } from 'react-router-dom';
 
-import { getIsAuthenticated } from '../AuthReducer';
+import { getIsAuthenticated } from '../Reducer';
 
 interface PrivateRouteProps extends RouteProps {
   component: any;

@@ -5,16 +5,16 @@ import { persistReducer } from 'redux-persist';
 import ReduxPersist from '@config/ReduxPersistConfig';
 import AppSettingsReducer, {
   STATE_KEY as APP_SETTINGS_STATE_KEY,
-} from '@modules/app-settings/AppSettingsReducer';
+} from '@modules/app-settings/Reducer';
 import AuthReducer, {
   STATE_KEY as AUTH_STATE_KEY,
-} from '@modules/auth/AuthReducer';
+} from '@modules/auth/Reducer';
 import RouterReducer, {
   STATE_KEY as ROUTER_STATE_KEY,
-} from '@modules/router/RouterReducer';
+} from '@modules/router/Reducer';
 import UserReducer, {
   STATE_KEY as USER_STATE_KEY,
-} from '@modules/user/UserReducer';
+} from '@modules/user/Reducer';
 
 const persist = R.curry(persistReducer)(ReduxPersist.storeConfig);
 

@@ -2,10 +2,10 @@ import { REHYDRATE } from 'redux-persist';
 import { SagaIterator } from 'redux-saga';
 import { all, fork, put, select, take } from 'redux-saga/effects';
 
-import { SIGN_IN } from '@modules/auth/AuthActions';
-import { getIsAuthenticated } from '@modules/auth/AuthReducer';
+import { SIGN_IN } from '@modules/auth/Actions';
+import { getIsAuthenticated } from '@modules/auth/Reducer';
 
-import { appAuthenticated } from './AppActions';
+import { appAuthenticated } from './Actions';
 
 function* appAuthenticatedSaga(): SagaIterator {
   // eslint-disable-next-line fp/no-loops
