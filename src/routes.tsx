@@ -8,6 +8,8 @@ import PrivateRoute from '@modules/auth/components/PrivateRoute';
 // Auth pages.
 const SignIn = lazy(() => import('@modules/auth/pages/SignIn'));
 const SignUp = lazy(() => import('@modules/auth/pages/SignUp'));
+// Event pages.
+const CreateEvent = lazy(() => import('@modules/event/pages/Create'));
 // Settings pages.
 const Setting = lazy(() => import('@modules/settings/pages/Settings'));
 // Other pages.
@@ -34,6 +36,7 @@ export default (
         path="/settings/:settingsId(user)"
         component={Setting}
       />
+      <PrivateRoute exact path="/events/create" component={CreateEvent} />
       {/* Catch all routes */}
       <Route component={NotFoundPage} />
     </Switch>
