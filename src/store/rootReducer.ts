@@ -15,6 +15,9 @@ import RouterReducer, {
 import UserReducer, {
   STATE_KEY as USER_STATE_KEY,
 } from '@modules/user/Reducer';
+import EventReducer, {
+  STATE_KEY as EVENT_STATE_KEY,
+} from '@modules/event/Reducer';
 
 const persist = R.curry(persistReducer)(ReduxPersist.storeConfig);
 
@@ -26,4 +29,5 @@ export default (history: any) =>
     R.assoc(APP_SETTINGS_STATE_KEY, AppSettingsReducer),
     R.assoc(AUTH_STATE_KEY, AuthReducer),
     R.assoc(USER_STATE_KEY, UserReducer),
+    R.assoc(EVENT_STATE_KEY, EventReducer),
   )({});

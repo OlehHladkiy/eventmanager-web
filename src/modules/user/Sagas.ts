@@ -5,14 +5,14 @@ import { SagaIterator } from 'redux-saga';
 import { Action } from '@store/models';
 import { getReduxAction } from '@store/helpers';
 
-import * as ApiService from './services/api';
 import { UPDATE_ME } from './Actions';
+import * as ApiService from './services/api';
 
-function* updateMeSaga({ type, payload: { id, data } }: Action): SagaIterator {
+function* updateMeSaga({ type, payload }: Action): SagaIterator {
   try {
-    const response = yield call(ApiService.updateMe, id, data);
+    const { data } = yield call(ApiService.updateMe, payload);
 
-    yield put(getReduxAction(type, response?.data));
+    yield put(getReduxAction(type, data));
     yield call(notify.success, 'Successfully updated!');
   } catch (err) {
     yield put(getReduxAction(type));
