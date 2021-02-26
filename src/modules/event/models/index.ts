@@ -49,3 +49,35 @@ export type ScheduleEvent = {
   starts_at: Date | string;
   ends_at: Date | string;
 };
+
+export interface DetailsFormValues {
+  title: string;
+  organizer: string;
+  type: EventType;
+  category: EventCategory;
+  location_type: EventLocationType;
+  location_value: string;
+  starts_at: any;
+  ends_at: any;
+  schedule_type: string;
+}
+
+export enum EventManageItem {
+  Details = 'details',
+  Basic = 'basic',
+  Publish = 'publish',
+}
+
+export const EVENT_DETAILS_FIELDS = [
+  'title',
+  'organizer',
+  'type',
+  'category',
+  'location_type',
+  'location_value',
+  'starts_at',
+  'ends_at',
+  'schedule_type',
+];
+
+export const EVENT_BASIC_INFO_FIELDS = ['image', 'description'];
