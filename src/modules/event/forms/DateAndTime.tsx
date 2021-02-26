@@ -11,11 +11,14 @@ const DateAndTime = () => {
     switch (scheduleType) {
       case EventScheduleType.Single: {
         return (
-          <Form.Item name="date">
-            <DatePicker.RangePicker
-              showTime={{ showHour: true, showMinute: true, showSecond: false }}
-            />
-          </Form.Item>
+          <>
+            <Form.Item name="starts_at">
+              <DatePicker />
+            </Form.Item>
+            <Form.Item name="ends_at">
+              <DatePicker />
+            </Form.Item>
+          </>
         );
       }
       default: {
@@ -47,7 +50,7 @@ const DateAndTime = () => {
           </Radio.Button>
         </Radio.Group>
       </Form.Item>
-      <Form.Item dependencies={['schedule_type']}>
+      <Form.Item shouldUpdate>
         {({ getFieldValue }) =>
           getFormItemByScheduleType(getFieldValue('schedule_type'))
         }

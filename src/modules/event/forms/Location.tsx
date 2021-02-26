@@ -45,7 +45,7 @@ const Location = () => {
           </Radio.Button>
         </Radio.Group>
       </Form.Item>
-      <Form.Item dependencies={['location_type']}>
+      <Form.Item shouldUpdate>
         {({ getFieldValue }) =>
           getFormItemByLocationType(getFieldValue('location_type'))
         }
