@@ -8,7 +8,7 @@ import { CreateUpdateEventData } from '../Actions';
 const URL = `${AppConfig.apiUrl}/events`;
 
 export const getEvent = (id: string, ...config: any) =>
-  axios.get(`${URL}/events/${id}`, ...config);
+  axios.get(`${URL}/${id}`, ...config);
 
 export const getEvents = (params: Record<string, any>, ...config: any) =>
   axios.get(getUrlWithParams(URL, params), ...config);
