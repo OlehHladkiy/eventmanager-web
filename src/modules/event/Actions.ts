@@ -39,7 +39,10 @@ export const createEvent = (payload: CreateUpdateEventData) => ({
   payload,
 });
 
-export const updateEvent = (payload: CreateUpdateEventData) => ({
+export const updateEvent = (payload: {
+  id: string;
+  data: CreateUpdateEventData;
+}) => ({
   type: UPDATE_EVENT,
   payload,
 });

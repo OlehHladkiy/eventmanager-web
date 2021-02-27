@@ -1,5 +1,5 @@
 import { message as notify } from 'antd';
-import { all, call, put, takeEvery } from 'redux-saga/effects';
+import { all, call, put, fork, takeEvery } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import { SagaIterator } from 'redux-saga';
 
@@ -46,8 +46,8 @@ function* createEventSaga({ type, payload }: Action): SagaIterator {
     yield put(setIsLoading(false));
 
     yield put(getReduxAction(type, data));
-    yield call(notify.success, `${data.title} was successfully created`);
-    yield put(push('/dashboard'));
+    yield fork(notify.success, `${data.title} was successfully created`);
+    yield put(push(`/events/${data.id}/details`));
   } catch (err) {
     yield put(getReduxAction(type));
   }

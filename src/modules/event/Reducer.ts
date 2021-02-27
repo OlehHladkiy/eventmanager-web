@@ -1,3 +1,4 @@
+import moment from 'moment';
 import * as R from 'ramda';
 
 import { SIGN_OUT } from '@modules/auth/Actions';
@@ -9,6 +10,7 @@ import {
   UPDATE_EVENT,
   SET_IS_LOADING,
 } from './Actions';
+import { EVENT_DETAILS_FIELDS, EVENT_BASIC_INFO_FIELDS } from './models';
 
 export const STATE_KEY = 'event';
 
@@ -50,8 +52,25 @@ const Reducer = (
 
 export const getEvents = R.compose(R.values, R.path([STATE_KEY, 'data']));
 
-export const getEventById = (state: EventState, id: string) =>
+export const getEvent = (state: EventState, id: string) =>
   R.path([STATE_KEY, 'data', id], state);
+
+export const getEventDetails = (state: EventState, id: string) =>
+  R.compose(
+    (event: any) => ({
+      ...event,
+      starts_at: event.starts_at ? moment(event.starts_at) : null,
+      ends_at: event.ends_at ? moment(event.ends_at) : null,
+    }),
+    R.pick(EVENT_DETAILS_FIELDS),
+    R.defaultTo({}),
+  )(getEvent(state, id));
+
+export const getEventBasicInfo = (state: EventState, id: string) =>
+  R.compose(
+    R.pick(EVENT_BASIC_INFO_FIELDS),
+    R.defaultTo({}),
+  )(getEvent(state, id));
 
 export const getIsLoading = R.path([STATE_KEY, 'isLoading']);
 
