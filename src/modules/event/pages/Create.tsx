@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { createEvent } from '../Actions';
+import { createEvent, CreateUpdateEventData } from '../Actions';
 import { getIsLoading } from '../Reducer';
 import Details from '../forms/Details';
 import { EventLocationType, EventScheduleType } from '../models';
@@ -12,12 +12,7 @@ const Create = () => {
 
   const dispatch = useDispatch();
 
-  const onFinish = ({ date, ...data }: any) => {
-    const [starts_at, ends_at] = date.map((d: string) =>
-      new Date(d).toISOString(),
-    );
-    data.schedule_events = [{ starts_at, ends_at }];
-
+  const onFinish: any = (data: CreateUpdateEventData) => {
     dispatch(createEvent(data));
   };
 
