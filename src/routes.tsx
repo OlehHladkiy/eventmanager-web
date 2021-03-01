@@ -11,6 +11,7 @@ const SignUp = lazy(() => import('@modules/auth/pages/SignUp'));
 // Event pages.
 const CreateEvent = lazy(() => import('@modules/event/pages/Create'));
 const ManageEvent = lazy(() => import('@modules/event/pages/Manage'));
+const EventList = lazy(() => import('@modules/event/pages/List'));
 // Settings pages.
 const Setting = lazy(() => import('@modules/settings/pages/Settings'));
 // Other pages.
@@ -32,6 +33,7 @@ export default (
       <PrivateRoute exact path="/" component={RootRedirect} />
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/signup" component={SignUp} />
+      <PrivateRoute exact path="/events" component={EventList} />
       <PrivateRoute
         exact
         path="/settings/:settingsId(user)"
