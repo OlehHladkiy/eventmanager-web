@@ -68,6 +68,13 @@ export enum EventManageItem {
   Publish = 'publish',
 }
 
+export enum EventStatus {
+  Draft = 'draft',
+  All = 'all',
+  Option = 'Option',
+  Part = 'Part',
+}
+
 export const EVENT_DETAILS_FIELDS = [
   'title',
   'organizer',
