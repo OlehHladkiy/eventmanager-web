@@ -1,11 +1,11 @@
-import { Row, Col } from 'antd';
-import { Select } from 'antd';
+import { Row, Col, Select, Input } from 'antd';
 import React from 'react';
-import Search from 'antd/lib/input/Search';
 import styled from 'styled-components';
 
 import { SearchOutlined } from '@ant-design/icons';
 import { EventStatus } from '@modules/event/models';
+
+const { Search } = Input;
 
 const FiltersBar = () => (
   <FiltersBar.Wrapper>
@@ -46,7 +46,7 @@ FiltersBar.Select = styled(Select)`
 `;
 
 FiltersBar.Wrapper = styled.div`
-  margin: 2%;
+  margin-bottom: 50px;
 `;
 
 export default FiltersBar;

@@ -11,8 +11,8 @@ interface EventsPageWrapperProps {
 }
 
 const EventsWrapper = ({ children, title }: EventsPageWrapperProps) => (
-  <div>
-    <PageHeader
+  <EventsWrapper.Wrapper>
+    <EventsWrapper.Header
       title={title}
       extra={[
         <Button key="1">
@@ -27,12 +27,17 @@ const EventsWrapper = ({ children, title }: EventsPageWrapperProps) => (
       ]}
     />
     <FiltersBar />
-    <EventsWrapper.Content>{children}</EventsWrapper.Content>
-  </div>
+    <div>{children}</div>
+  </EventsWrapper.Wrapper>
 );
 
-EventsWrapper.Content = styled.div`
-  padding: 14px 16px;
+EventsWrapper.Wrapper = styled.div`
+  padding: 48px 62px;
+  height: 100%;
+`;
+
+EventsWrapper.Header = styled(PageHeader)`
+  padding: 35px 0;
 `;
 
 export default EventsWrapper;
