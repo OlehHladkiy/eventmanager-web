@@ -34,16 +34,16 @@ export default (
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/signup" component={SignUp} />
       <PrivateRoute exact path="/events" component={EventList} />
-      <PrivateRoute
-        exact
-        path="/settings/:settingsId(user)"
-        component={Setting}
-      />
       <PrivateRoute exact path="/events/create" component={CreateEvent} />
       <PrivateRoute
         exact
         path="/events/:id/:page(details|basic|tickets)"
         component={ManageEvent}
+      />
+      <PrivateRoute
+        exact
+        path="/settings/:settingsId(user)"
+        component={Setting}
       />
       {/* Catch all routes */}
       <Route component={NotFoundPage} />

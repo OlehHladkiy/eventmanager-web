@@ -13,7 +13,7 @@ const Events = () => {
   }, [dispatch]);
 
   return (
-    <EventsWrapper title={'Events'}>
+    <EventsWrapper title="Events">
       <EventsTable />
     </EventsWrapper>
   );
