@@ -10,7 +10,11 @@ import {
   UPDATE_EVENT,
   SET_IS_LOADING,
 } from './Actions';
-import { EVENT_DETAILS_FIELDS, EVENT_BASIC_INFO_FIELDS } from './models';
+import {
+  EVENT_DETAILS_FIELDS,
+  EVENT_BASIC_INFO_FIELDS,
+  EventStatus,
+} from './models';
 
 export const STATE_KEY = 'event';
 
@@ -51,6 +55,19 @@ const Reducer = (
 };
 
 export const getEvents = R.compose(R.values, R.path([STATE_KEY, 'data']));
+
+export const getTableEvents = R.compose(
+  R.map((event: any) => ({
+    key: event.id,
+    title: event.title,
+    organizer: event.organizer,
+    image: event.image,
+    date: event.published_at,
+    type: event.type,
+    status: EventStatus.Draft,
+  })),
+  getEvents,
+);
 
 export const getEvent = (state: EventState, id: string) =>
   R.path([STATE_KEY, 'data', id], state);
