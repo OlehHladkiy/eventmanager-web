@@ -24,7 +24,7 @@ export interface CreateUpdateEventData {
   schedule_events: [ScheduleEvent];
 }
 
-export const getEvents = (payload: Record<string, any>) => ({
+export const getEvents = (payload?: Record<string, any>) => ({
   type: GET_EVENTS,
   payload,
 });
