@@ -13,8 +13,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { MoreOutlined } from '@ant-design/icons';
-import { EventStatus } from '@modules/event/models';
-import { getEvents as getEventsSelector } from '@modules/event/Reducer';
+import { getTableEvents } from '@modules/event/Reducer';
 
 const columns = [
   {
@@ -22,7 +21,7 @@ const columns = [
     dataIndex: 'event',
     width: 900,
     key: 'event',
-    render: (text: any, row: any) => {
+    render: (_: any, row: any) => {
       const date = new Date(row.date);
       return (
         <Space size="large">
@@ -48,7 +47,7 @@ const columns = [
     title: 'Sold',
     dataIndex: 'sold',
     key: 'sold',
-    render: (text: any, row: any) => {
+    render: (_: any, row: any) => {
       return (
         <>
           <Statistic value={row === Number ? row : 0} suffix="/ 0" />
@@ -61,7 +60,7 @@ const columns = [
     title: 'Gross',
     dataIndex: 'gross',
     key: 'gross',
-    render: (text: any, row: any) => {
+    render: (_: any, row: any) => {
       return (
         <>
           <Statistic
@@ -81,28 +80,17 @@ const columns = [
   {
     dataIndex: 'button',
     key: 'button',
-    render: (text: any) => <Button icon={<MoreOutlined />}>{text}</Button>,
+    render: (text: string) => <Button icon={<MoreOutlined />}>{text}</Button>,
   },
 ];
 
 const List = () => {
-  const events: any[] = useSelector(getEventsSelector);
-  const data = events.map((event: any) => {
-    return {
-      key: event.id,
-      title: event.title,
-      organizer: event.organizer,
-      image: event.image,
-      date: event.published_at,
-      type: event.type,
-      status: EventStatus.Draft,
-    };
-  });
+  const events: any[] = useSelector(getTableEvents);
 
   return (
     <Table
       columns={columns}
-      dataSource={data}
+      dataSource={events}
       size="small"
       pagination={false}
     />
