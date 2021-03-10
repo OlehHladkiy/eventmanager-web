@@ -47,30 +47,22 @@ const columns = [
     title: 'Sold',
     dataIndex: 'sold',
     key: 'sold',
-    render: (_: any, row: any) => {
-      return (
-        <>
-          <Statistic value={row === Number ? row : 0} suffix="/ 0" />
-          <Statistic value={100} loading />
-        </>
-      );
-    },
+    render: (_: any, row: any) => (
+      <>
+        <Statistic value={row === Number ? row : 0} suffix="/ 0" />
+        <Statistic value={100} loading />
+      </>
+    ),
   },
   {
     title: 'Gross',
     dataIndex: 'gross',
     key: 'gross',
-    render: (_: any, row: any) => {
-      return (
-        <>
-          <Statistic
-            value={row === Number ? row : 0}
-            precision={2}
-            prefix="$"
-          />
-        </>
-      );
-    },
+    render: (_: any, row: any) => (
+      <>
+        <Statistic value={row === Number ? row : 0} precision={2} prefix="$" />
+      </>
+    ),
   },
   {
     title: 'Status',
